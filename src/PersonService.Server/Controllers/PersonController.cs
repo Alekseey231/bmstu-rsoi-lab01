@@ -48,7 +48,7 @@ public class PersonController : ControllerBase
 
             var dtoPerson = PersonConverter.Convert(person);
             
-            return Ok(dtoPerson);
+            return Created($"/api/v1/persons/{person.Id}", dtoPerson);
         }
         catch (Exception e)
         {
