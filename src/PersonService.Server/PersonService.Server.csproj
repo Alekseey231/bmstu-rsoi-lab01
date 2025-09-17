@@ -25,4 +25,10 @@
         <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.4.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Dto\PersonService.Dto.Http\PersonService.Dto.Http.csproj" />
+      <ProjectReference Include="..\PersonService.Core\PersonService.Core.csproj" />
+      <ProjectReference Include="..\PersonService.Dto.Http.Converters\PersonService.Dto.Http.Converters.csproj" />
+    </ItemGroup>
+
 </Project>
