@@ -15,7 +15,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      # TODO build, test and deploy project
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build service
+        run: dotnet publish src/PersonService.Server/PersonService.Server.csproj -c Release -o PersonServicePublish/
+
+      - name: Run Unit Tests
+        run: dotnet test src/PersonService.sln
 
       - name: Run API Tests
         uses: matt-ball/newman-action@master
