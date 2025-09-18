@@ -33,7 +33,7 @@ public class PersonServiceTests
             person.Address,
             person.Work);
         
-        createdPerson.ShouldBe().Equals(person);
+        createdPerson.ShouldBe().Equal(person);
         mock.Verify(r => r.CreatePersonAsync(person.Name, person.Age, person.Address, person.Work), Times.Once);
     }
 
@@ -49,7 +49,7 @@ public class PersonServiceTests
         
         var gotPerson = await sut.GetPersonByIdAsync(person.Id);
         
-        gotPerson.ShouldBe().Equals(person);
+        gotPerson.ShouldBe().Equal(person);
     }
 
     [Fact]
