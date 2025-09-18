@@ -1,5 +1,9 @@
 using System.Reflection;
 using Microsoft.OpenApi.Models;
+using PersonService.Database.Repositories.Extensions;
+using PersonService.Dto.Http.Validators.Extensions;
+using PersonService.Services.PersonService.Extensions;
+using PersonService.Database.Context.Extensions;
 
 namespace PersonService.Server;
 
@@ -25,6 +29,11 @@ public class Startup
 
         });
         services.AddSwaggerGenNewtonsoftSupport();
+        
+        services.AddValidators();
+        services.AddDbContext(Configuration);
+        services.AddRepositories();
+        services.AddPersonService();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

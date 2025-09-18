@@ -1,0 +1,1 @@
+dotnet publish src/PersonService.Server/PersonService.Server.csproj -c Release -o PersonServicePublish

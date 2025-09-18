@@ -10,6 +10,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="FluentValidation" Version="11.11.0" />
         <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
         <PackageReference Include="Serilog.Expressions" Version="5.0.0" />
         <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
@@ -26,9 +31,13 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Database\PersonService.Database.Context\PersonService.Database.Context.csproj" />
+      <ProjectReference Include="..\Database\PersonService.Database.Repositories\PersonService.Database.Repositories.csproj" />
       <ProjectReference Include="..\Dto\PersonService.Dto.Http\PersonService.Dto.Http.csproj" />
       <ProjectReference Include="..\PersonService.Core\PersonService.Core.csproj" />
-      <ProjectReference Include="..\PersonService.Dto.Http.Converters\PersonService.Dto.Http.Converters.csproj" />
+      <ProjectReference Include="..\Dto\PersonService.Dto.Http.Converters\PersonService.Dto.Http.Converters.csproj" />
+      <ProjectReference Include="..\Dto\PersonService.Dto.Http.Validators\PersonService.Dto.Http.Validators.csproj" />
+      <ProjectReference Include="..\Services\PersonService.Services.PersonService\PersonService.Services.PersonService.csproj" />
     </ItemGroup>
 
 </Project>
