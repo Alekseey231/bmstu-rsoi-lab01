@@ -39,6 +39,28 @@ jobs:
           tags: xom4ik/person-service:latest
           context: .
 
+      - name: Update docker compose
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST_IP }}
+          port: ${{ secrets.HOST_PORT }}
+          username: ${{ secrets.HOST_USER }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          source: docker-compose.yml
+          target: /opt/rsoi/
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST_IP }}
+          port: ${{ secrets.HOST_PORT }}
+          username: ${{ secrets.HOST_USER }}
+          password: ${{ secrets.HOST_PASSWORD }}
+          script: |
+            docker login -u ${{ secrets.USERNAME }} -p ${{ secrets.PASSWORD }}
+            docker compose -f /opt/rsoi/docker-compose.yml pull
+            docker compose -f /opt/rsoi/docker-compose.yml up -d
+
       - name: Run API Tests
         uses: matt-ball/newman-action@master
         with:
