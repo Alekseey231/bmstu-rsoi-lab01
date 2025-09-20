@@ -34,9 +34,9 @@ public class PersonRepository : IPersonRepository
             throw new PersonNotFoundException($"Person with id {id} was not found");
         
         dbPerson.Name = name;
-        dbPerson.Age = age;
-        dbPerson.Address = address;
-        dbPerson.Work = work;
+        dbPerson.Age = age ?? dbPerson.Age;
+        dbPerson.Address = address ?? dbPerson.Address;
+        dbPerson.Work = work ?? dbPerson.Work;
         
         await _context.SaveChangesAsync();
         
