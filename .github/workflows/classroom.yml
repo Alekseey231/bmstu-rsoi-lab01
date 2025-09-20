@@ -62,7 +62,7 @@ jobs:
             docker compose -f /opt/rsoi/docker-compose.yml up -d
 
       - name: Wait for API
-        uses: jtalk/url-health-check-action@v3.6
+        uses: jtalk/url-health-check-action@v3.2
         with:
           url: http://${{ secrets.HOST_IP }}:8080/api/v1/persons
           max-attempts: 30
